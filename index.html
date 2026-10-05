@@ -4,155 +4,281 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Febrio | Portofolio Informatika</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Icon GitHub & lainnya -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        primary: '#3b82f6',
+                        accent: '#60a5fa'
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Animasi masuk yang halus dan premium */
+        /* Animasi kustom */
         @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fadeInUp {
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.7s ease-out forwards;
         }
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.3s; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+
+        /* Efek Glow pada Card */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+            transform: translateY(-5px);
+        }
     </style>
 </head>
-<body class="bg-[#0a0f1e] text-gray-300 font-sans antialiased selection:bg-blue-500/20 selection:text-blue-200">
+<body class="bg-darker text-slate-300 font-sans antialiased selection:bg-primary/30 selection:text-white">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6 border-b border-transparent">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-5 border-b border-transparent">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-6">
-            <a href="#beranda" class="text-xl font-bold tracking-tighter text-white">Portofolio<span class="text-blue-500">.</span></a>
-            <ul class="flex space-x-6 text-sm font-medium">
-                <li><a href="#beranda" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                <li><a href="#tentang" class="text-gray-400 hover:text-white transition-colors">Profil</a></li>
-                <li><a href="#portofolio" class="text-gray-400 hover:text-white transition-colors">Proyek</a></li>
-                <li><a href="#kontak" class="text-gray-400 hover:text-white transition-colors">Kontak</a></li>
+            <a href="#beranda" class="text-2xl font-bold tracking-tighter text-white">
+                Febrio<span class="text-primary">.</span>
+            </a>
+            <ul class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
+                <li><a href="#beranda" class="text-slate-400 hover:text-white transition-colors">Beranda</a></li>
+                <li><a href="#tentang" class="text-slate-400 hover:text-white transition-colors">Profil</a></li>
+                <li><a href="#portofolio" class="text-slate-400 hover:text-white transition-colors">Proyek</a></li>
+                <li><a href="#kontak" class="text-slate-400 hover:text-white transition-colors">Kontak</a></li>
             </ul>
+            <a href="https://github.com/febrioeby" target="_blank" class="text-slate-300 hover:text-white text-xl transition-transform hover:scale-110">
+                <i class="fa-brands fa-github"></i>
+            </a>
         </div>
     </nav>
 
-    <section id="beranda" class="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-hidden bg-[#0d1226]">
+    <!-- Beranda / Hero Section -->
+    <section id="beranda" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden bg-gradient-to-b from-darker to-dark">
+        <!-- Dekorasi Background -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
         
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'white\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10 w-full">
-            
-            <div class="md:col-span-7 space-y-6 animate-fadeInUp delay-1">
-                <span class="inline-block px-4 py-1 bg-blue-950/50 border border-blue-800 text-blue-400 rounded-full text-xs font-mono uppercase tracking-widest">
-                    Informatics Student Pamulang University
+            <!-- Teks -->
+            <div class="md:col-span-7 space-y-6 animate-fade-in-up">
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 text-accent rounded-full text-xs font-mono font-semibold uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    Mahasiswa Informatika & Web Developer
                 </span>
-                <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight tracking-tighter">
-                    Febrio. Menerjemahkan <span class="text-blue-500">Logika</span> Menjadi Solusi Digital Berdampak.
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight">
+                    Menerjemahkan <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">Logika</span> Menjadi Solusi Digital.
                 </h1>
-                <p class="text-xl text-gray-400 max-w-2xl leading-relaxed">
-                    Pengembang Web yang berfokus pada struktur kode yang bersih, performa database yang optimal, dan pengujian kualitas perangkat lunak.
+                <p class="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed font-light">
+                    Halo, saya Febrio. Saya berfokus pada struktur kode yang bersih, performa database yang optimal, dan pengujian kualitas perangkat lunak.
                 </p>
-                <div class="flex items-center space-x-4 pt-4">
-                    <a href="#portofolio" class="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/30">
-                        Lihat Proyek Saya
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                    <a href="#portofolio" class="bg-primary text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-600 transition-all shadow-lg shadow-primary/30 flex items-center gap-2">
+                        <i class="fa-solid fa-code"></i> Lihat Proyek
                     </a>
-                    <a href="#tentang" class="text-white hover:text-blue-400 transition-colors flex items-center space-x-2 text-sm">
-                        <span>Profil Saya</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <a href="https://github.com/febrioeby" target="_blank" class="bg-slate-800 text-white font-semibold py-3 px-8 rounded-lg hover:bg-slate-700 transition-all border border-slate-700 flex items-center gap-2">
+                        <i class="fa-brands fa-github"></i> GitHub Profile
                     </a>
                 </div>
             </div>
-
-            <div class="md:col-span-5 flex justify-center md:justify-end animate-fadeInUp delay-2">
-                <div class="w-80 h-96 bg-gray-800 rounded-full border-[10px] border-[#0a0f1e] shadow-2xl shadow-gray-900/50 overflow-hidden group">
-                    
-                    <img src="FotoSaya.jpeg" alt="Febrio Profile" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    
+            <!-- Gambar Profil -->
+            <div class="md:col-span-5 flex justify-center md:justify-end animate-fade-in-up delay-200">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-400 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative w-72 h-72 md:w-80 md:h-80 rounded-full border-4 border-slate-800 overflow-hidden shadow-2xl">
+                        <img src="FotoSaya.jpeg" alt="Febrio Profile" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="tentang" class="py-24 bg-[#0a0f1e] border-y border-gray-900">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-white mb-10 tracking-tight">Keahlian & Fokus</h2>
-            <p class="text-gray-400 leading-relaxed text-base mb-12 max-w-3xl mx-auto">
-                Saya memiliki ketertarikan kuat pada **Object-Oriented Programming (OOP)** untuk membangun arsitektur sistem yang modular dan mudah dikelola. Saya juga fokus pada **Software Quality Assurance**, memastikan setiap modul yang saya kembangkan lulus uji fungsionalitas dan performa sebelum diterbitkan ke lingkungan produksi.
-            </p>
-            
-            <div class="flex flex-wrap justify-center gap-2 max-w-lg mx-auto">
-                <span class="px-4 py-1.5 bg-[#0d1226] border border-gray-800 text-xs rounded text-blue-400 font-mono">PHP / OOP</span>
-                <span class="px-4 py-1.5 bg-[#0d1226] border border-gray-800 text-xs rounded text-blue-400 font-mono">MySQL / UML</span>
-                <span class="px-4 py-1.5 bg-[#0d1226] border border-gray-800 text-xs rounded text-blue-400 font-mono">Tailwind CSS</span>
-                <span class="px-4 py-1.5 bg-[#0d1226] border border-gray-800 text-xs rounded text-blue-400 font-mono">Java Fundamentals</span>
-                <span class="px-4 py-1.5 bg-[#0d1226] border border-gray-800 text-xs rounded text-blue-400 font-mono">QA Testing</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="portofolio" class="py-24 bg-[#0d1226]">
+    <!-- Tentang / Keahlian -->
+    <section id="tentang" class="py-24 bg-dark">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-12">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Proyek Pengembangan</h2>
-                <div class="w-12 h-1 bg-blue-500 mt-2"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="animate-fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Tentang & <span class="text-primary">Fokus Utama</span></h2>
+                    <p class="text-slate-400 leading-relaxed text-lg mb-6">
+                        Saya memiliki ketertarikan kuat pada <strong>Object-Oriented Programming (OOP)</strong> untuk membangun arsitektur sistem yang modular dan mudah dikelola. 
+                    </p>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Selain pengembangan, saya juga menaruh fokus pada <strong>Software Quality Assurance (QA)</strong>, memastikan setiap modul yang saya kembangkan lulus uji fungsionalitas dan performa sebelum diterbitkan ke lingkungan produksi.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 animate-fade-in-up delay-200">
+                    <!-- Tech Stack Cards -->
+                    <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                        <i class="fa-brands fa-php text-4xl text-indigo-400 mb-4"></i>
+                        <h4 class="text-white font-bold mb-1">PHP / OOP</h4>
+                        <p class="text-sm text-slate-400">Backend Development</p>
+                    </div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                        <i class="fa-solid fa-database text-4xl text-blue-400 mb-4"></i>
+                        <h4 class="text-white font-bold mb-1">MySQL</h4>
+                        <p class="text-sm text-slate-400">Database & UML</p>
+                    </div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                        <i class="fa-brands fa-python text-4xl text-yellow-400 mb-4"></i>
+                        <h4 class="text-white font-bold mb-1">Python</h4>
+                        <p class="text-sm text-slate-400">Data Structure & Logic</p>
+                    </div>
+                    <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                        <i class="fa-solid fa-vial-circle-check text-4xl text-green-400 mb-4"></i>
+                        <h4 class="text-white font-bold mb-1">QA Testing</h4>
+                        <p class="text-sm text-slate-400">Software Quality</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portofolio / GitHub Projects -->
+    <section id="portofolio" class="py-24 bg-darker">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">Proyek & <span class="text-primary">Repositori</span></h2>
+                    <p class="text-slate-400">Kumpulan proyek yang telah saya unggah di GitHub.</p>
+                </div>
+                <a href="https://github.com/febrioeby?tab=repositories" target="_blank" class="hidden md:flex items-center gap-2 text-primary hover:text-white transition-colors font-semibold">
+                    Lihat Semua <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="bg-[#0a0f1e] border border-gray-800 p-7 rounded-2xl group hover:border-blue-800 transition-all duration-300">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-blue-500 group-hover:bg-blue-950/50">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.747 0-3.332.477-4.5 1.253"></path></svg>
+                <!-- Proyek 1: Python Circular Playlist (Dari file pert10.py) -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col h-full animate-fade-in-up">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 bg-yellow-500/10 rounded-xl flex items-center justify-center text-yellow-500">
+                            <i class="fa-brands fa-python text-2xl"></i>
                         </div>
-                        <span class="text-xs font-mono text-gray-600">Web App</span>
+                        <span class="text-xs font-mono font-bold px-3 py-1 bg-slate-800 rounded-full text-slate-300 border border-slate-700">Data Structure</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-3">Sistem Perpustakaan</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-5">Manajemen sirkulasi buku dengan batasan hak akses yang tegas untuk administrator dan pustakawan.</p>
-                    <div class="text-[11px] font-mono bg-gray-900 px-3 py-1 rounded text-blue-300 border border-gray-800 inline-block">PHP & MySQL</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Circular Playlist Manager</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6 flex-grow text-sm">
+                        Implementasi struktur data Circular Linked List menggunakan Python untuk mensimulasikan pemutar musik (menambah, menghapus, dan memutar lagu selanjutnya secara melingkar).
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto pt-6 border-t border-slate-700/50">
+                        <a href="https://github.com/febrioeby/nama-repo-python-anda" target="_blank" class="w-full text-center py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-lg transition-colors border border-slate-700">
+                            <i class="fa-brands fa-github mr-2"></i>Lihat Kode
+                        </a>
+                    </div>
                 </div>
 
-                <div class="bg-[#0a0f1e] border border-gray-800 p-7 rounded-2xl group hover:border-blue-800 transition-all duration-300">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-blue-500 group-hover:bg-blue-950/50">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                <!-- Proyek 2: Perpustakaan -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col h-full animate-fade-in-up delay-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500">
+                            <i class="fa-solid fa-book text-2xl"></i>
                         </div>
-                        <span class="text-xs font-mono text-gray-600">Inventory</span>
+                        <span class="text-xs font-mono font-bold px-3 py-1 bg-slate-800 rounded-full text-slate-300 border border-slate-700">Web App</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-3">Sistem Stok Barang</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-5">Dikembangkan selama masa kerja praktek (internship) untuk mengontrol operasi CRUD pada stok barang.</p>
-                    <div class="text-[11px] font-mono bg-gray-900 px-3 py-1 rounded text-blue-300 border border-gray-800 inline-block">HTML / CSS / PHP</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sistem Perpustakaan</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6 flex-grow text-sm">
+                        Sistem manajemen sirkulasi buku dengan batasan hak akses yang tegas (Role-Based Access Control) untuk tingkat administrator dan pustakawan.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-[10px] font-mono bg-slate-900 px-2 py-1 rounded text-accent border border-slate-800">PHP</span>
+                        <span class="text-[10px] font-mono bg-slate-900 px-2 py-1 rounded text-accent border border-slate-800">MySQL</span>
+                    </div>
+                    <div class="flex items-center gap-3 mt-auto pt-6 border-t border-slate-700/50">
+                        <a href="https://github.com/febrioeby/repo-perpustakaan" target="_blank" class="w-full text-center py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-lg transition-colors border border-slate-700">
+                            <i class="fa-brands fa-github mr-2"></i>Lihat Kode
+                        </a>
+                    </div>
                 </div>
 
-                <div class="bg-[#0a0f1e] border border-gray-800 p-7 rounded-2xl group hover:border-blue-800 transition-all duration-300">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-blue-500 group-hover:bg-blue-950/50">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2M9 9h10m-6 0a2 2 0 002 2 2 2 0 00-2 2m6-9a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <!-- Proyek 3: Penggajian -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col h-full animate-fade-in-up delay-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500">
+                            <i class="fa-solid fa-money-check-dollar text-2xl"></i>
                         </div>
-                        <span class="text-xs font-mono text-gray-600">Payroll</span>
+                        <span class="text-xs font-mono font-bold px-3 py-1 bg-slate-800 rounded-full text-slate-300 border border-slate-700">Payroll</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-3">Sistem Penggajian</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-5">Implementasi *hashing* keamanan login dan fitur cetak slip gaji presisi menggunakan PHP OOP.</p>
-                    <div class="text-[11px] font-mono bg-gray-900 px-3 py-1 rounded text-blue-300 border border-gray-800 inline-block">OOP PHP & MySQL</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Sistem Penggajian</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6 flex-grow text-sm">
+                        Implementasi keamanan login menggunakan *hashing* dan dilengkapi fitur cetak slip gaji presisi. Dibangun penuh menggunakan konsep arsitektur PHP OOP.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-[10px] font-mono bg-slate-900 px-2 py-1 rounded text-accent border border-slate-800">OOP PHP</span>
+                        <span class="text-[10px] font-mono bg-slate-900 px-2 py-1 rounded text-accent border border-slate-800">HTML/CSS</span>
+                    </div>
+                    <div class="flex items-center gap-3 mt-auto pt-6 border-t border-slate-700/50">
+                        <a href="https://github.com/febrioeby/repo-penggajian" target="_blank" class="w-full text-center py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-lg transition-colors border border-slate-700">
+                            <i class="fa-brands fa-github mr-2"></i>Lihat Kode
+                        </a>
+                    </div>
                 </div>
 
+            </div>
+            
+            <!-- Mobile: Tombol lihat semua repo -->
+            <div class="mt-8 text-center md:hidden">
+                <a href="https://github.com/febrioeby" target="_blank" class="inline-flex items-center gap-2 text-slate-300 hover:text-white bg-slate-800 px-6 py-3 rounded-full font-semibold border border-slate-700">
+                    <i class="fa-brands fa-github"></i> Lihat GitHub Saya
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="kontak" class="py-24 bg-[#0a0f1e] border-t border-gray-900">
-        <div class="max-w-2xl mx-auto px-6 text-center">
-            <h2 class="text-2xl font-bold text-white mb-6">Mari Terhubung</h2>
-            <p class="text-gray-400 mb-8 max-w-xl mx-auto">Saya terbuka untuk kolaborasi proyek, diskusi teknis, atau peluang kerja magang.</p>
-            <a href="mailto:email.anda@gmail.com" class="inline-flex items-center space-x-2 bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-600/30">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                <span>Kirim Pesan Ke Email Saya</span>
-            </a>
+    <!-- Kontak -->
+    <section id="kontak" class="py-24 bg-dark relative overflow-hidden">
+        <!-- Dekorasi Background -->
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Mari Berkolaborasi.</h2>
+            <p class="text-slate-400 mb-10 text-lg">Saya terbuka untuk kolaborasi proyek, diskusi teknis, atau peluang kerja maupun magang.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="mailto:email.anda@gmail.com" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-primary text-white font-bold py-4 px-10 rounded-xl hover:bg-blue-600 transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/20">
+                    <i class="fa-solid fa-envelope"></i> Kirim Email
+                </a>
+                <a href="https://linkedin.com/in/username-linkedin-anda" target="_blank" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-slate-800 text-white font-bold py-4 px-10 rounded-xl hover:bg-slate-700 transition-all border border-slate-700">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
         </div>
     </section>
 
-    <footer class="py-8 text-center bg-[#0a0f1e] border-t border-gray-900">
-        <p class="text-xs text-gray-600">&copy; 2026. Dibangun dengan logika sistematis.</p>
+    <!-- Footer -->
+    <footer class="py-10 text-center bg-darker border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-slate-500">&copy; 2026 Febrio. Dibangun dengan logika sistematis.</p>
+            <div class="flex gap-4 text-slate-500">
+                <a href="https://github.com/febrioeby" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // 1. Ant-Melompat Bug Fix (Logika Fundamental)
+        // Memperbaiki bug scroll / URL Anchor
         if (window.location.hash) {
             window.history.replaceState(null, null, window.location.pathname);
         }
@@ -160,15 +286,15 @@
             window.scrollTo(0, 0);
         });
 
-        // 2. Efek Blur/Frosted Navbar saat di-scroll
+        // Efek Glassmorphism pada Navbar saat di-scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 30) {
-                navbar.classList.add('bg-[#0a0f1e]/80', 'backdrop-blur-md', 'border-gray-800', 'py-4');
-                navbar.classList.remove('transparent', 'border-transparent', 'py-6');
+                navbar.classList.add('bg-darker/80', 'backdrop-blur-md', 'border-slate-800', 'py-4');
+                navbar.classList.remove('transparent', 'border-transparent', 'py-5');
             } else {
-                navbar.classList.add('transparent', 'border-transparent', 'py-6');
-                navbar.classList.remove('bg-[#0a0f1e]/80', 'backdrop-blur-md', 'border-gray-800', 'py-4');
+                navbar.classList.add('transparent', 'border-transparent', 'py-5');
+                navbar.classList.remove('bg-darker/80', 'backdrop-blur-md', 'border-slate-800', 'py-4');
             }
         });
     </script>
