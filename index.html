@@ -123,9 +123,13 @@
         }
 
         /* Carousel Image styling */
+        /* Carousel Image styling */
         .carousel-img {
-            max-height: 70vh;
+            max-height: 55vh; /* Tinggi maksimal dikurangi agar pas di layar */
+            width: auto;
+            max-width: 100%;
             object-fit: contain;
+            margin: 0 auto; /* Memastikan gambar tetap persis di tengah */
         }
     </style>
 </head>
@@ -422,7 +426,7 @@
                 Saya terbuka untuk kolaborasi proyek, diskusi teknis, atau peluang kerja maupun magang.
                 Jangan ragu untuk menghubungi saya.
             </p>
-            <a href="mailto:febrioebi123@gmail.com" id="btn-email"
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=febrioebi123@gmail.com" target="_blank" rel="noopener noreferrer" id="btn-email"
                 class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-semibold text-white bg-accent hover:bg-blue-500 transition-colors duration-200">
                 <i class="fa-solid fa-envelope"></i>
                 Kirim Email
